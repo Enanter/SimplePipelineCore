@@ -1,4 +1,4 @@
-### SimplePipelineCore
+# SimplePipelineCore
 ## goal
 The goal of this project is to understand and develop a modern RISC architecture with instruction pipeline. This project will support RV32I ISA. 
 
@@ -11,21 +11,21 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 
 [Back-end] Execution and Write-back. (Control data)
 
- 1.  Fetch 
+ ### 1.  Fetch 
  Find the instruction on the current program counter. Control program counter.
   * L1i:
   * Program Counter: Tells the current instruction line number.
     * Stage Checker: check each stage is done. essencial for pipelining.
       
- 1.  Decode
+ ### 2.  Decode
  Decode the instruction and send signals to back-end to do operations.
   * L1d read:
   * Register Files:
     
- 1.  Execution
+ ### 3.  Execution
  Execute operations.
 
-# 1.  Write-back
+ ### 4.  Write-back
  Save the data to the Level 1 data cache.
   * L1d write:
   * Register Files:
@@ -33,8 +33,8 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 ## Register Files
 ## RV32I Instruction Set
 
-add
-----
+### add
+
 
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
 .. table::
