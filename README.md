@@ -33,27 +33,9 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 ## Register Files
 ## RV32I Instruction Set
 
-### add
-
-  |---------------------------------------------|
-  |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
-  |---------------------------------------------|
-  |00000|00   |rs2  |rs1  |000  |rd   |01100|11 |
-  |---------------------------------------------|
-
 
 | First Header  | Second Header |
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
-
-:Format:
-  | add        rd,rs1,rs2
-
-:Description:
-  | Adds the registers rs1 and rs2 and stores the result in rd.
-  | Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.
-
-:Implementation:
-  | x[rd] = x[rs1] + x[rs2]
 
