@@ -1,11 +1,11 @@
 # SimplePipelineCore
-## goal
+## 1. goal
 The goal of this project is to understand and develop a modern RISC architecture with instruction pipeline. This project will support RV32I ISA. 
 
 Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-back) works on a instruction in order, instead waiting for the previous stage finishes the instruction.
 
 
-## Stages
+## 2. Stages
 
 [Front-end] Fetch and Decode. (Check instructions)
 
@@ -30,17 +30,14 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
   * L1d write:
   * Register Files:
 
-## Register Files
-## List of Supported RV32I Instruction Set
 
-###ADD
-
-| 31 25  | 24 20 | 19 15| 14 12| 11 7| 6 0|
+## 3. List of Supported RV32I Instruction Set
+### instruction types
+*R-type
+|31-----25|24---20|19---15|14-12|11---7|6-----0|
 | -----|---|---|---|----|----------- |
-| Content Cell  | Content Cell  |R-type
-| Content Cell  | Content Cell  |I-Type
-| Content Cell  | Content Cell  |S-type
-| Content Cell  | Content Cell  |U-Type
+|Funct7|rs2|rs1|funct3|rd|opcode|
 
+## 4. Register Files
 ## References
 https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
