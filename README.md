@@ -11,18 +11,18 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 
 [Back-end] Execution and Write-back. (Control data)
 
-# 1.  Fetch 
+ 1.  Fetch 
  Find the instruction on the current program counter. Control program counter.
   * L1i:
   * Program Counter: Tells the current instruction line number.
     * Stage Checker: check each stage is done. essencial for pipelining.
       
-# 1.  Decode
+ 1.  Decode
  Decode the instruction and send signals to back-end to do operations.
   * L1d read:
   * Register Files:
     
-# 1.  Execution
+ 1.  Execution
  Execute operations.
 
 # 1.  Write-back
