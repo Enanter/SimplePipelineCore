@@ -31,11 +31,16 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
   * Register Files:
 
 ## Register Files
-## RV32I Instruction Set
+## List of Supported RV32I Instruction Set
 
+###ADD
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| 31 25  | 24 20 | 19 15| 14 12| 11 7| 6 0|
+| ----------------------------- |
+| Content Cell  | Content Cell  |R-type
+| Content Cell  | Content Cell  |I-Type
+| Content Cell  | Content Cell  |S-type
+| Content Cell  | Content Cell  |U-Type
 
+## References
+https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
