@@ -42,6 +42,10 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
   |---------------------------------------------|
 
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 :Format:
   | add        rd,rs1,rs2
