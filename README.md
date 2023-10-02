@@ -43,6 +43,13 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 ^31-25^24-20^19-15^14-12^11-7^6-0^
 |Funct7|rs2|rs1|funct3|rd|opcode|
 
+| Column 1                | Col 2 | Big row span   |
+|:-----------------------:|-------| -------------- |
+| r1_c1 spans two cols           || One large cell |
+| r2_c1 spans two rows    | r2_c2 |                |
+|_^                      _| r3_c2 |                |
+|    ______ &#20;         | r4_c2 |_              _|
+
 ## 4. Register Files
 ## References
 https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
