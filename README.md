@@ -50,6 +50,16 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 |_^                      _| r3_c2 |                |
 |    ______ &#20;         | r4_c2 |_              _|
 
+| Column 1 | Column 2 | Column 3 | Column 4 |
+| -------- | -------- | -------- | -------- |
+| r1,c1    | r1,c2    | r1,c3    | r1,c4    |
+| r2,c1              || r2,c3    | r2,c4    |
+
+| Column 1 | Column 2 | Column 3 | Column 4 |
+| -------- | -------- | -------- | -------- |
+| r1,c1    | r1,c2    | r1,c3    | r1,c4    |
+| r2,c1            |~~| r2,c3    | r2,c4    |
+
 ## 4. Register Files
 ## References
 https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
