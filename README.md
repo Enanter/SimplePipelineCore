@@ -36,7 +36,7 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 ###ADD
 
 | 31 25  | 24 20 | 19 15| 14 12| 11 7| 6 0|
-| ----------------------------- |
+| -----|---|---|---|----|----------- |
 | Content Cell  | Content Cell  |R-type
 | Content Cell  | Content Cell  |I-Type
 | Content Cell  | Content Cell  |S-type
