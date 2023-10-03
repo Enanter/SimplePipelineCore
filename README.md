@@ -6,7 +6,7 @@ The goal of this project is to understand and develop a modern RISC architecture
 
 Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-back) works on a instruction in order, instead waiting for the previous stage finishes the instruction.
 
-## Terms
+### Terms
 
 + *n*'b=*n* bit
 + funct *n* = *n* bit function
