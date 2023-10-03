@@ -35,10 +35,10 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 ### instruction types
 *R-type
 
-|31-25|24-20|19-15|14-12|11-7|6-0|
-|-----------|---|---|---|----|-|
-|31-28|27-24|23-20|19-|14-12|11---7|6-----0|
-|Funct7|:::|rs2      |rs1|funct3|rd|opcode|
+|operation|31-25|24-20|19-15|14-12|11-7|6-0|
+|-------|----|---|---|---|----|-|
+||Funct7|rs2|rs1|funct3|rd|opcode|
+
 
 
 ## 4. Register Files
