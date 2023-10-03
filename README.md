@@ -52,9 +52,6 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 
 
 
-## 4. Register Files
-
-
 ## References
 https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
 
