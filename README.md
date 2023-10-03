@@ -16,6 +16,8 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 
 ## 2. Stages
 
+![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_3_2023_FDEWDiagram.png)
+
 [Front-end] Fetch and Decode. (Check instructions)
 
 [Back-end] Execution and Write-back. (Control data)
@@ -63,5 +65,4 @@ https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
 https://passlab.github.io/CSE564/notes/lecture09_RISCV_Impl_pipeline.pdf
 
 Slide 3: https://learning.edx.org/course/course-v1:LinuxFoundationX+LFD119x+2T2023/block-v1:LinuxFoundationX+LFD119x+2T2023+type@sequential+block@e72ee6a62f7e453e969eb07d6ccac335/block-v1:LinuxFoundationX+LFD119x+2T2023+type@vertical+block@5db7d94ced80405d9030d79c1b780165
-![image](https://github.com/Enanter/SimplePipelineCore/assets/126539177/abe3c64f-8f7d-4288-b3e6-d2d957ccc565)
 
