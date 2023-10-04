@@ -2,7 +2,7 @@
 
 
 ## 1. goal
-The goal of this project is to understand and develop a modern RISC architecture with instruction pipeline. This project will support RV32I ISA. 
+The goal of this project is to understand and develop a modern RISC architecture with out-of-order instruction pipeline. This project will support RV32I ISA. 
 
 Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-back) works on a instruction in order, instead waiting for the previous stage finishes the instruction.
 
