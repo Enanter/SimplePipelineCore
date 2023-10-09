@@ -2,21 +2,31 @@
 
 
 ## 1. goal
-The goal of this project is to understand and develop a modern RISC architecture with out-of-order instruction pipeline. This project will support RV32I ISA. 
+The goal of this project is to understand and develop a modern RISC architecture with out-of-order instruction pipeline. This CPU will support Risc V 32 bit integer Instruction Set version 2.0. 
 
 Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-back) works on a instruction in order, instead waiting for the previous stage finishes the instruction.
 
-### Terms
+## 2. Architecture
 
-+ *n*'b=*n* bit
-+ funct *n* = *n* bit function
-+ rs *n* =register source *n*
-+ rd = register destination
-<td colspan=2>
-
-## 2. Stages
+### Architecture version 0.1(Arch 0.1) 
 
 ![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_3_2023_FDEWDiagram.png)
+The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to implement out-of-order, thus it is in-order.
+
+
+## 3. List of Supporting RV32I Instruction Set
+
+### instruction types
+
+*R-type:
+
+*I-type:
+
+*S-type:
+
+*U-type:
+
+## 4. Stages
 
 [Front-end] Fetch and Decode. (Check instructions)
 
@@ -41,14 +51,6 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
   * L1d write:
   * Register Files:
 
-
-## 3. List of Supported RV32I Instruction Set
-### instruction types
-*R-type
-
-|operation|31-25|24-20|19-15|14-12|11-7|6-0|
-|-------|----|---|---|---|----|-|
-||Funct7|rs2|rs1|funct3|rd|opcode|
 
 
 
