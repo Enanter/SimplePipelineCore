@@ -8,7 +8,19 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 
 ## 2. Architecture
 
-### Architecture version 0.1(Arch 0.1) 
+
+### Microarchitecture version 0.1.2(Arch 0.1.2)
+
+![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_11_2023_MicroArch0_1_2.png)
+
+* implemented more details and created connections for load,store, jump and branch operations.
+ * RV32I ISA checker: checks the instruction is for Risc-V 32 bit integer ISA; inst[4:0]=bbb11 (bbb != 111).
+ * Queue: holds and distributes operations to execution units from the decoder
+ * Register checker (proposal for 0.2.0): Checks the current operation using previous registers on the other stages. Later, this can be used for out-of-order. Placed between the decoder and the scheduler)
+
+
+
+### Microarchitecture version 0.1(MicroArch 0.1) 
 
 ![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_3_2023_FDEWDiagram.png)
 The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to implement out-of-order, thus it is in-order.
@@ -18,13 +30,30 @@ The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to i
 
 ### instruction types
 
-*R-type:
+*R-type: -
 
-*I-type:
+*I-type: -
 
-*S-type:
+*S-type: -
 
-*U-type:
+*U-type: -
+
+*J-type: -
+
+*B-type: -
+
+*S-type: -
+
+*L-type: -
+
+*M-type: -
+
+*CSR-type: -
+
+*LUI-type: -
+
+*AUIPC: -
+
 
 ## 4. Stages
 
