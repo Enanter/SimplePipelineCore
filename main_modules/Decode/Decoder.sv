@@ -9,8 +9,8 @@ Archtecture_Diagram0.1.1
 */
 
 /*
-logical shift - add 0 to do shift
-arithmetic shift- move the original sign bit into the vacated bits to do shift
+logical shift - add 0 to do the shift
+arithmetic shift- move the original sign bit into the vacated bits to do the shift
 zero-extend-
 sign-extend-
 */
@@ -24,14 +24,12 @@ module Decoder(clk,inst,oper,rd,rs1,rs2,imm,DONE_Decoder);
 	output [11:0]imm;	//immediate value
 	output DONE_Decoder;
 
-	parameter ALU= 7'b011_0011, ALUImm = 7'b001_0011, Load = 7'b000_0011, Store = 7'b010_0011, Jalr = 7'b110_0111,Jal = 7'b110_1111,AUIPC=7'b001_0111,LUI = 7'b011_0111,FENCE= 7'b000_1111,CSRECB=7'b111_0011,Branch=7'b110_0011;	//opcode-inst[6:0] opcode types
-	//parameter f3addsub = 3'b000, f3sll = 3'b001, f3slt = 3'b010, f3sltu = 3'b011, f3xor = 3'b100, f3sr = 3'b101, f3and = 3'b111 funct3-inst[14:12] operations
-	//parameter f7first = 7'b000_0000, f7second = 7'b010_0000; //funct7-inst[31:25] slections of the operation detail
+	parameter ALU=5'b0_1100,ALUImm=5'b0_0100,Load=5'b0_0000,Store=5'b0_1000,Jalr=5'b1_1001,Jal=5'b1_1011,AUIPC=5'b0_0101,LUI=5'b0_1101,FENCE=5'b0_0011,CSRECB='b1_1100,Branch=7'b1_1000;	//opcode-inst[6:2] opcode types
 
 	always @* begin
 		DONE_Decoder= 0; //&& DONE_StageCheck; to hold decoder for the other 
 		//RV32I instruction
-		case(inst[6:0])		//types of operations
+		case(inst[6:2])		//types of operations
 
 			ALU: begin	//R-type ALU operations
 				//same type shares the same instruction structure. set registers as soon as possible, so the register file unit does not need to wait.
@@ -82,15 +80,15 @@ module Decoder(clk,inst,oper,rd,rs1,rs2,imm,DONE_Decoder);
 				rs2 = 5'bx;		//does not use
 				imm = inst[31:20];	//offset
 				case(inst[14:12])
-					3'b000:	begin	//LB-load 8bit from memory
+					3'b000:	begin	//LB-load 8bit from L1d
 					end
-					3'b001:	begin	//LH-load 16bit from memory and sign-extends to 32 bits before storing in register destination
+					3'b001:	begin	//LH-load 16bit from L1d and sign-extends to 32 bits before storing in register destination
 					end
-					3'b010:	begin	//LW-load 32bit from memory into register destination
+					3'b010:	begin	//LW-load 32bit from L1d into register destination
 					end
 					3'b100:	begin	//LBU-load 8bit unsigned
 					end
-					3'b101:	begin	//LHU-load 16bit from memory and zero-extends to 32 bits before storing in register destination
+					3'b101:	begin	//LHU-load 16bit from L1d and zero-extends to 32 bits before storing in register destination
 					end
 					default: oper=7'd0;
 				endcase
@@ -103,9 +101,9 @@ module Decoder(clk,inst,oper,rd,rs1,rs2,imm,DONE_Decoder);
 				imm <= {inst[31:25],inst[11:7]};	//offset
 				
 				case(inst[14:12])
-					3'b000: 	//SB= store LSB 8bits from rs2 to mem[rs1]
-					3'b001:		//SH= store LSB 16bits from rs2 to mem[rs1]
-					3'b010:		//SW= store LSB 32bits from rs2 to mem[rs1]
+					3'b000: 	//SB= store LSB 8bits from rs2 to L1d[rs1]
+					3'b001:		//SH= store LSB 16bits from rs2 to L1d[rs1]
+					3'b010:		//SW= store LSB 32bits from rs2 to L1d[rs1]
 				endcase
 			end
 
