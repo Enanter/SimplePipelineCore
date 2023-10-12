@@ -14,9 +14,9 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
 ![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_11_2023_MicroArch0_1_2.png)
 
 * implemented more details and created connections for load,store, jump and branch operations.
- * RV32I ISA checker: checks the instruction is for Risc-V 32 bit integer ISA; inst[4:0]=bbb11 (bbb != 111).
- * Queue: holds and distributes operations to execution units from the decoder
- * Register checker (proposal for 0.2.0): Checks the current operation using previous registers on the other stages. Later, this can be used for out-of-order. Placed between the decoder and the scheduler)
+  * RV32I ISA checker: checks the instruction is for Risc-V 32 bit integer ISA; inst[4:0]=bbb11 (bbb != 111).
+  * Queue: holds and distributes operations to execution units from the decoder
+  * Register checker (proposal for 0.2.0): Checks the current operation using previous registers on the other stages. Later, this can be used for out-of-order. Placed between the decoder and the scheduler)
 
 
 
@@ -30,29 +30,29 @@ The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to i
 
 ### instruction types
 
-*R-type: -
+* R-type: -
 
-*I-type: -
+* I-type: -
 
-*S-type: -
+* S-type: -
 
-*U-type: -
+* U-type: -
 
-*J-type: -
+* J-type: -
 
-*B-type: -
+* B-type: -
 
-*S-type: -
+* S-type: -
 
-*L-type: -
+* L-type: -
 
-*M-type: -
+* M-type: -
 
-*CSR-type: -
+* CSR-type: -
 
-*LUI-type: -
+* LUI-type: -
 
-*AUIPC: -
+* AUIPC: -
 
 
 ## 4. Stages
