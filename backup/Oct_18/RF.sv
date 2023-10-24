@@ -1,27 +1,48 @@
-module RF(rdAddr,rs1Addr,rs2Addr,Length,LS,rd,rs1,rs2,);
+module RF(rdAddr,rs1Addr,rs2Addr,Length,LS,rd,Next_INST,DONE_ALU,rs1,rs2,DONE_RF);
 	input [4:0] rdAddr;	//register destination address
 	input [4:0] rs1Addr;	//register source 1 address
 	input [4:0] rs2Addr;	//register source 2 address
-	input  Load;		//RF load operation. Load = LS[0];
+	input [2:0] Length;	//Length for data of the Load and Store operation.
+	input [1:0] LS;		//RF access operation. 0= no access, 2'b01= load, 2'b10=store, 2'b11 unused.
 	input [31:0] rd;	//register destination	data
-	input clk;
+	input Next_INST;	//Program Counter number to save current PC.
+	input DONE_ALU;
 
-	output reg [31:0] rs1;		//register source 1 data
+	
+	output reg [31:0]rs1;		//register source 1 data
 	output reg [31:0] rs2;		//register source 2 data
+	output reg DONE_RF;		//Register file done
 
 	reg [31:0][31:0] regi;		//32 entries for 32bit register.
 
 	
 	assign regi[0] =32'b0;		//x0 = zero register.
-	
+
 	always @* begin
-		if(Load) begin
-			regi[rdAddr] = rd;
+		if(Next_INST) begin
+			DONE_RF = 0;
 		end
-		else begin
-			rs1 = regi[rs1Addr];
-			rs2 = regi[rs2Addr];
-		end
+	end
+	always @* begin
+		case(LS) 
+			default:begin
+				rs1 = regi[rs1Addr];
+				rs2 = regi[rs2Addr];
+				if (DONE_ALU) begin
+					regi[rdAddr] = rd;
+					DONE_RF = 1;
+				end
+
+				end
+			2'b01:begin          //load
+				regi[rdAddr] = rd;
+				DONE_RF =1;
+			end
+			2'b10:begin
+				rs2 = regi[rs2Addr];    //store
+				DONE_RF =1;
+			end
+		endcase
 	end
 
 endmodule
