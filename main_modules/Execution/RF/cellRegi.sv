@@ -7,7 +7,7 @@ module CellRegi32(d,clk,rst,en,Q) begin
 
 	reg [31:0] register;
 
-	always @(posedge clk) begin
+	always_ff @(posedge clk) begin
 		if(!rst) begin
 			if(en) Q = d;
 		end

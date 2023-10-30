@@ -1,6 +1,10 @@
-//set x0 as Zero register
+//set x0 as Zero register x1 for sp x2 for?
 //needs to implement a length limiter.
 //Yet, very Basic RF. It does not follow MicroArch 0.1.2.
+
+//should I make SL signal to lock for write?(latch)
+//is this need done signal?
+//does alu operation needs permission to write??
 module RF32x32(rd,clk,rst,LoadRF,rdAddr,rs1Addr,rs2Addr,rs1,rs2) begin
 	input [31:0] rd;
 	input clk;
