@@ -1,15 +1,28 @@
 # SimplePipelineCore
 
 
-## 1. goal
-The goal of this project is to understand and develop a modern RISC architecture with out-of-order instruction pipeline. This CPU will support Risc V 32 bit integer Instruction Set version 2.0. 
+## 1. Goal
 
-Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-back) works on a instruction in order, instead waiting for the previous stage finishes the instruction.
+### Aim: 
+
+* creating a power efficicent processor for future projects, which is going to be sensor signal processing, NPU, and communicating other devices via BLE.
+
+### Objectives: 
+
+* following RISC-V 32 integer Instruction Set Architecture.
+* implementing out-of-order pipeline microarchitecture.
+* receiving and processing data directly without load/store data to a memory/reg.
+* optimizing the microarchitecture for looping and receiving data.
+
+### Methods:
+
+* Simulating the design with SystemVerilog ( with UVM - need to learn UVM at this moment Nov 9,2023)
+* Emulating the RTL  on PYNQ-Z2 or Genesys 2
 
 ## 2. Architecture
 
 
-### Microarchitecture version 0.1.2(Arch 0.1.2)
+### Microarchitecture version 0.1.2~0.1.4
 
 ![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_11_2023_MicroArch0_1_2.png)
 
@@ -18,70 +31,39 @@ Instruction pipeline means each CPU stage(Fetch, Decode, Execution, and Write-ba
   * Queue: holds and distributes operations to execution units from the decoder
   * Register checker (proposal for 0.2.0): Checks the current operation using previous registers on the other stages. Later, this can be used for out-of-order. Placed between the decoder and the scheduler)
 
-
-
 ### Microarchitecture version 0.1(MicroArch 0.1) 
 
 ![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_3_2023_FDEWDiagram.png)
 The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to implement out-of-order, thus it is in-order.
 
+## 3. Directory & Progression
 
-## 3. List of Supporting RV32I Instruction Set
+├── Architecture_Diagram          0.1.4           # **design**; MicroArchitecture diagrams
+├── backup                        -               # backups
+│   └── (...dates)                -               # backup/replaced files on the date.
+├── logisimEvo_modules            0.1.4           # **design**; The CPU microarchitecture in logisim-evolution (intended design in register level)
+│   └── CPU.circ                  x
+│       ├── Fetch                 x               # Fetch
+│       ├── Decode                x               # Decode
+│       ├── RF                    v               # Register File
+│       ├── ALU                   x               # Execution
+│       └── WriteBack             x               # Load/Store
+├── main_modules                  0.1.4           # **design**; the SystemVerilog  files with the testbenches
+│      ├── Fetch                  x               # Fetch
+│      ├── Decode                 x               # Decode
+│      ├── Execution              x               # Execution
+│      └── WriteBack              x               # Load/Store
+├── Testbenches                   -               # Testbench results of the SystemVerilog files in the main_modules
+│   └── (...dates)                -               # tested modules on the date.
+├── Resources                     -               # Resources such as reference, RV32I ISA, and etc,.
+└── Documents                     -               # informational documents of the project.
 
-### instruction types
+### implementation: MicroArch 0.1.4
 
-* R-type: -
-
-* I-type: -
-
-* S-type: -
-
-* U-type: -
-
-* J-type: -
-
-* B-type: -
-
-* S-type: -
-
-* L-type: -
-
-* M-type: -
-
-* CSR-type: -
-
-* LUI-type: -
-
-* AUIPC: -
-
-
-## 4. Stages
-
-[Front-end] Fetch and Decode. (Check instructions)
-
-[Back-end] Execution and Write-back. (Control data)
-
- ### 1.  Fetch 
- Find the instruction on the current program counter. Control program counter.
-  * L1i:
-  * Program Counter: Tells the current instruction line number.
-    * Stage Checker: check each stage is done. essencial for pipelining.
-      
- ### 2.  Decode
- Decode the instruction and send signals to back-end to do operations.
-  * L1d read:
-  * Register Files:
-    
- ### 3.  Execution
- Execute operations.
-
- ### 4.  Write-back
- Save the data to the Level 1 data cache.
-  * L1d write:
-  * Register Files:
-
-
-
+* in-order pipeline            x
+* RV32I ISA                    x
+* direct port signal access    x
+* looping optimization         x
 
 ## References
 https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
