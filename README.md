@@ -38,6 +38,7 @@ The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to i
 
 ## 3. Directory & Progression
 
+'''
 ├── Architecture_Diagram          0.1.4           # **design**; MicroArchitecture diagrams
 ├── backup                        -               # backups
 │   └── (...dates)                -               # backup/replaced files on the date.
@@ -57,6 +58,7 @@ The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to i
 │   └── (...dates)                -               # tested modules on the date.
 ├── Resources                     -               # Resources such as reference, RV32I ISA, and etc,.
 └── Documents                     -               # informational documents of the project.
+'''
 
 ### implementation: MicroArch 0.1.4
 
