@@ -36,31 +36,7 @@
 ![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_3_2023_FDEWDiagram.png)
 The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to implement out-of-order, thus it is in-order.
 
-## 3. Directory & Progression
-
-'''bash
-├── Architecture_Diagram          0.1.4           # **design**; MicroArchitecture diagrams
-├── backup                        -               # backups
-│   └── (...dates)                -               # backup/replaced files on the date.
-├── logisimEvo_modules            0.1.4           # **design**; The CPU microarchitecture in logisim-evolution (intended design in register level)
-│   └── CPU.circ                  x
-│       ├── Fetch                 x               # Fetch
-│       ├── Decode                x               # Decode
-│       ├── RF                    v               # Register File
-│       ├── ALU                   x               # Execution
-│       └── WriteBack             x               # Load/Store
-├── main_modules                  0.1.4           # **design**; the SystemVerilog  files with the testbenches
-│      ├── Fetch                  x               # Fetch
-│      ├── Decode                 x               # Decode
-│      ├── Execution              x               # Execution
-│      └── WriteBack              x               # Load/Store
-├── Testbenches                   -               # Testbench results of the SystemVerilog files in the main_modules
-│   └── (...dates)                -               # tested modules on the date.
-├── Resources                     -               # Resources such as reference, RV32I ISA, and etc,.
-└── Documents                     -               # informational documents of the project.
-'''
-
-### implementation: MicroArch 0.1.4
+## 3. implementation: MicroArch 0.1.4
 
 * in-order pipeline            x
 * RV32I ISA                    x
