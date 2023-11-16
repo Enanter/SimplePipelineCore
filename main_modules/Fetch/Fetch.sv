@@ -1,45 +1,64 @@
-//?should PC be at least 23+1(1mb+sign bit) bits to support that jump can be +-1mb?
-
-/*0.1: just load instructions from RAM
-order of steps:	
-^Fetch=	MAR<=PC				CIR<=MDR^=>Decode
-^DRAM=		MDR<=Inst[MAR][31:0]^
-^accumulator				CDR<=MDR^
-*/
-//Program Counter override for B,J types.
-
-//0.x: load instructions to L1i from RAM if L1i is empty, cache miss-> update L1i.
-//0.x': multiple instructions fetching.
-
-module Fetch (PC,clk,rst,inst,DONE_Fetch);
-	input [31:0]PC;
-	input clk;
-	input rst;		//positive reset
-	input [31:0] inst;
-	output reg [31:0]Req_Addr;
-	output reg DONE_Fetch;
-	output reg [31:0] CIR;	//Current Instruction Register
-	output reg [31:0] CDR;	//Current Data Register
 
 
-	reg [31:0] MAR; 	//Memory Address Register
-	reg [31:0] MDR; 	//Memory Data Register
+module Fetch (Sig_NextInst,rst,MAR);
+	//input MBR; //memory buffer register. From Memory to decode.
+	input Sig_NextInst; // AND gate[every stage finished](when every stage is finished) => signal 1 to proceed to the next PC or address.
+	input rst; //positive reset
+	output reg [31:0] MAR; //Memory Address Register. From Fetch to Memory. MAR <= PC
+	//output Sig_FetchDone;
 
-	
-	always_comb  begin
-		DONE_Fetch = 0;
-		if(!rst) begin
-			MAR = PC;	//in
-			MDR = Inst;
-			if(MDR[5:0] == 5'b11111) CDR = MDR;	//let's say data in RAM starts with 5'b11111
-			else CIR = MDR;
-			DONE_Fetch=1;
+	reg [31:0] PC = 32'h0;
+
+	assign MAR = PC;
+	always @(posedge rst, posedge Sig_NextInst) begin
+		if(rst)	begin
+			PC=0;	//reset the instruction request in 0.
 		end
 		else begin
-			MAR <=0;
-			MDR <=0;
-			Req_Addr <=0;
-			DONE_Fetch <=1;
+			if(Sig_NextInst) begin
+				PC = PC+4;
+			end
 		end
+	end
+endmodule
+
+module Fetch_tb();
+
+	logic Sig_nextInst; // AND gate[every stage finished](when every stage is finished) => signal 1 to proceed to the next PC or address.
+	logic rst; //positive reset
+	logic [31:0] MAR; //Memorry Address Register. From Fetch to Memory. MAR <= PC
+
+
+	Fetch DUT (Sig_nextInst,rst,MAR);
+
+	initial begin
+	   #20;
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;	
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;	
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;
+		rst = 0; #10;
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;	
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;
+		rst = 1; #10;
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;	
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;
+		rst = 0; #10;
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;	
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;
+		rst =1; Sig_nextInst =1;#10;  //race condition check.
+		Sig_nextInst =0;#10;
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;	
+		Sig_nextInst =1;#10;
+		Sig_nextInst =0;#10;
 	end
 endmodule
