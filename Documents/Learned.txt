@@ -1,0 +1,5 @@
+Learned 
+-implementation does not need to be great at the beginning. It should be rather easy and verify the core implementation. Step-up approch. ex, the first decode module(before Nov 14) was trying to decode whole RV32I ISA. I realized that verifying pipelining model is more important, also it can prevent many errors at once.
+
+To-do
+-UVM

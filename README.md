@@ -34,14 +34,19 @@
 ### Microarchitecture version 0.1(MicroArch 0.1) 
 
 ![image](https://github.com/Enanter/SimplePipelineCore/blob/main/Architecture_Diagram/Oct_3_2023_FDEWDiagram.png)
-The goal of version 0.1 is implementing pipeline. Arch 0.1 is not targeting to implement out-of-order, thus it is in-order.
+The goal of version 0.1 is to implement pipeline. Arch 0.1 is not targeting to implement out-of-order, thus it is in-order.
 
-## 3. implementation: MicroArch 0.1.4
+## 3. Implementation: MicroArch 0.1.4
 
 * in-order pipeline            x
 * RV32I ISA                    x
 * direct port signal access    x
 * looping optimization         x
+
+## 4. Learned & Improved
+
+* Starting with small design modules; gradual expansion.
+
 
 ## References
 https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
