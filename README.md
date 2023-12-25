@@ -1,4 +1,4 @@
-# SimplePipelineCore
+# DIB CPU
 
 
 ## 1. Goal
@@ -10,7 +10,7 @@
 ### Objectives: 
 
 * following RISC-V 32 integer Instruction Set Architecture.
-* implementing out-of-order pipeline microarchitecture.
+* implementing another pathway for conditional & unconditional branching.
 * receiving and processing data directly without load/store data to a memory/reg.
 * optimizing the microarchitecture for looping and receiving data.
 
